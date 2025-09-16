@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prompt by Zain — Gallery</title>
+  <style>
+    :root { --bg:#0b0c10; --card:#111318; --muted:#9aa4af; --text:#e6e8eb; --accent:#22c55e; --btn:#16a34a; --btn-hover:#22d060; --border:#1f232a; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; background:linear-gradient(180deg, #0b0c10 0%, #0d1117 100%); color:var(--text); }
+    header { padding:16px; border-bottom:1px solid var(--border); position:sticky; top:0; background:#0d1117cc; backdrop-filter: blur(6px); z-index:50; }
+    .wrap { max-width:1200px; margin:0 auto; padding:0 16px; }
+    .toolbar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:10px; }
+    input[type="search"] { flex:1 1 260px; background:#0b0c10; color:var(--text); border:1px solid #222632; border-radius:10px; padding:8px 10px; }
+    .count { font-size:12px; color:#a7f3d0; }
+    .hero { background: radial-gradient(1200px 400px at 10% -20%, #1d2a22 0%, transparent 50%), radial-gradient(1200px 400px at 90% -30%, #1a2832 0%, transparent 50%); border-bottom:1px solid var(--border); text-align:center; }
+    .hero-inner { max-width:1200px; margin:0 auto; padding:46px 16px 28px; display:flex; flex-direction:column; align-items:center; gap:6px; }
+    .brand { font-size:32px; font-weight:800; letter-spacing:0.5px; }
+    .powered { font-size:11px; color:var(--muted); font-weight:300; letter-spacing:1px; }
+    main { padding: 22px 0 60px; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:16px; }
+    .card { background:var(--card); border:1px solid var(--border); border-radius:16px; overflow:hidden; display:flex; flex-direction:column; }
+    .img { position:relative; background:#0b0c10; aspect-ratio: 3 / 4; display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--border); }
+    .img img { width:100%; height:100%; object-fit:cover; display:block; }
+    .img::after { content:""; position:absolute; left:0; right:0; bottom:0; height:35%; background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 85%, rgba(0,0,0,0.7) 100%); pointer-events:none; }
+    .wm { position:absolute; left:12px; bottom:8px; z-index:2; font-weight:700; letter-spacing:2px; text-transform:uppercase; color: rgba(255,255,255,0.25); font-size:12px; user-select:none; pointer-events:none; }
+    .body { padding:12px; display:flex; flex-direction:column; gap:10px; }
+    .tiny { font-size:12px; color:var(--muted); }
+    textarea { width:100%; min-height:110px; background:#0b0c10; color:var(--text); border:1px solid #222632; border-radius:10px; padding:10px; font-size:13px; }
+    .row { display:flex; gap:8px; }
+    button.copy { background:var(--btn); color:#f0fdf4; border:1px solid #15803d; padding:9px 14px; border-radius:10px; font-size:13px; cursor:pointer; font-weight:600; transition: background .15s, transform .02s; }
+    button.copy:hover { background:var(--btn-hover); }
+    button.copy:active { transform: translateY(1px); }
+    footer { color:var(--muted); font-size:12px; text-align:center; padding:22px; }
+    @media (max-width: 480px) { textarea { min-height: 90px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="Search prompts…" oninput="render()" />
+        <span class="count" id="count"></span>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="brand">Prompt by Zain</div>
+      <div class="powered">powered by openmallu.ai</div>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <div class="grid" id="grid"></div>
+  </main>
+
+  <footer>
+    <p>Static HTML by <strong>Zain</strong> • <span class="powered">powered by openmallu.ai</span></p>
+  </footer>
+
+  <!-- Embedded prompts (as pasted) -->
+  <script type="text/plain" id="promptsText">1- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. The subject stands on a rooftop lined with repeating metal railings and vents, wearing an oversized charcoal technical coat with oversized collar, cropped charcoal trousers, and black leather derby shoes; a slim triangular cross‑body bag with Prada‑style hardware hangs across his chest. He leans against a railing, legs slightly apart, and looks up toward a distant skyline. Capture from a low angle using a 28 mm lens at f/3.5, 1/800 s, ISO 100 to emphasize the lines of the metal structures. Golden-hour sunlight casts long shadows that interact with the industrial geometry, while a cool-toned film grain adds understated sophistication consistent with Prada’s minimalist yet architectural campaigns.
+
+2- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. In a stark studio with white walls, a giant oval mirror leans against one corner, reflecting the subject and a portion of the room. He wears a sharply cut double‑breasted dark navy blazer with asymmetrical lapels over a tucked black turtleneck, paired with high‑waisted trousers and polished boots. He leans toward the mirror with one hand pressed lightly against the glass, creating a surreal doubling effect. Shoot with a 45 mm lens at f/4, 1/200 s, ISO 200; use a diffused overhead light and a smaller spot light to accentuate reflections and shadows. A cool monochrome grade and light film grain evoke Prada’s innovative, conceptual advertising sensibility.
+
+3- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. On a deserted beach at sunrise, the subject stands on a sleek white platform in the shallows, wearing a structured black turtleneck and wide off‑white tailored trousers rolled at the hem, barefoot, holding a rigid leather tote. He stands in profile, hands in his pockets, chin slightly raised as gentle waves lap at the platform’s edges. Photographed using a 35 mm lens at f/3.2, 1/640 s, ISO 200, capturing the soft pink sky and the reflections on water. The scene maintains Prada’s signature minimalist staging yet introduces an unexpected natural element for contrast. Subtle grain and pastel grading add a dreamlike quality.
+
+4- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. The subject lounges on a simple wooden chair in a sun‑drenched white room, wearing a crisp off‑white silk shirt tucked into relaxed tan trousers with a thin leather belt and minimalist slide sandals. He leans back casually with one leg extended, arm draped over the chair, eyes closed as though enjoying a quiet moment. Capture with a 50 mm lens at f/2.8, 1/500 s, ISO 100, using only natural light from a large window to bathe the scene in soft, contemplative brightness. Apply a subtle warm tint and gentle film grain to evoke Prada’s contemplative, minimal campaign style.
+
+5- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. On a rooftop overlooking a cityscape at dusk, he balances casually on a low wall wearing an oversized hoodie with signature Off-White diagonal stripes layered over a mesh tee, paired with wide cargo pants cinched at the ankles, and chunky skate-inspired sneakers. A crossbody bag with industrial straps hangs at his hip, and slim futuristic sunglasses cover his eyes. He sits with one leg up and the other dangling, elbows resting on his knee while staring confidently toward the horizon. Capture the scene with a 35 mm lens at f/2.8, 1/640 s, ISO 800 on a digital camera, letting the city lights begin to glow behind him. Add a teal-orange color grade and a touch of grain to enhance the gritty urban edge and street-luxury aesthetic.
+
+6- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. Against a stark concrete backdrop reminiscent of a raw industrial space, the subject poses with shoulders hunched and arms crossed, draped in an exaggeratedly oversized trench coat paired with wide-leg trousers and chunky sneakers; a single oversized earring and futuristic sunglasses add to the edgy street vibe. Capture this at a slightly high angle using a 24 mm lens on a high-resolution digital camera (f/1.8, 1/500 s, ISO 100) to emphasize the scale of the outfit and create an almost distorted perspective. Post-process with muted tones and a gritty texture overlay to mirror Balenciaga’s avant-garde campaign mood.
+
+7- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. Seated on a velvet vintage sofa in a richly decorated salon, he wears a maximalist ensemble: a vividly patterned suit jacket with wide lapels, matching wide trousers, a contrasting neckerchief, and jeweled loafers; colorful rings and a statement brooch complete the look. Shoot with a Mamiya RZ67 film camera and a 127 mm lens at f/4, 1/200 s on ISO 400 film, ensuring deep, saturated colors and refined grain. Soft, diffused lighting from a large window and a chandelier adds warmth, evoking Gucci’s flamboyant retro aesthetic.
+
+8- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. In an all‑white studio, the subject sits on a transparent lucite chair, legs crossed at the ankles and elbows resting casually on his knees; he wears a loose‑cut ivory suit jacket over a crisp turtleneck, matched with baggy trousers and high‑gloss ankle boots. Capture the scene at knee height with a Leica M10‑R and 35 mm lens at f/2.8, 1/250 s, ISO 200, using directional side lighting to create elegant shadow patterns on the floor. The image is finished with a soft matte color grade and slight vignette, echoing the clean sophistication of luxury lookbooks.
+
+9- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. At a night fairground illuminated by neon rides, he wears a baggy tie‑dye windbreaker in pastel hues, loose denim shorts, high white socks, and chunky sneakers; he stands with hands in pockets, slightly leaning into the soft glow from a nearby cotton-candy stand. Shot with a Polaroid Land Camera (Model 100) using peel-apart instant film, the image has a square format with slightly blurred edges and saturated pastel colors. Settings approximate to f/11, 1/125 s (fixed) and ISO 150; the instant film’s unique color shifts and subtle chemical streaks lend a dreamy, nostalgic carnival feel.
+
+10- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. On a windswept cliff overlooking the sea at sunrise, he wears an oversized charcoal cardigan layered over a loose striped shirt, wide linen trousers, and low‑top sneakers; a knit scarf flutters lightly in the breeze. The shot is taken with a 35 mm lens at f/2.8, 1/500 s, ISO 200 on a digital camera, capturing soft golden light and hazy distance. Add a subtle grain overlay and warm pastel color grading for a serene, cinematic feel.p
+
+11- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. Seated casually on a wooden bench in a modern art gallery, he sports an oversized cream turtleneck, relaxed-fit pleated trousers, chunky brogues, and a single silver earring; he gazes thoughtfully at a large abstract canvas. This scene is shot with a digital 50 mm lens at f/2.5, 1/250 s, ISO 320, using a handheld camera; the minimalist lighting creates soft shadows and subdued colors. Apply a clean film grain and a mild matte finish to enhance the quiet, contemplative atmosphere.
+
+12- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. Descending a dimly lit metro escalator at night, he wears a huge puffer coat, baggy track pants, and reflective sneakers; a beanie and chunky headphones complete the streetwear look. The handheld shot uses a 24 mm lens at f/2.0, 1/80 s, ISO 1600 on a digital camera to capture the moving escalator and low ambient light. Add a VHS glitch overlay, slight motion blur, and a cool neon color grade to heighten the urban, futuristic vibe.
+
+13- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. Waiting on a dim subway platform, hands in pockets and head turned slightly toward an approaching train, he sports a huge padded bomber jacket in neon green, black oversized parachute pants, a beanie, and chunky sneakers; earbuds dangle from his ears. The handheld photo is taken at eye level with a 35 mm lens on a digital camera, f/1.8, 1/60 s, ISO 1600, capturing the ambient fluorescent lights and motion blur of the train. A VHS-style glitch overlay and light chromatic aberration emphasize the gritty urban night vibe.
+
+14- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. Striding across a busy crosswalk, he sports a slate‑grey oversized bomber jacket over an untucked white tee, extra‑wide black trousers, chunky platform sneakers, and a sporty side bag slung diagonally. The handheld shot is taken at hip level with a wide 28 mm lens (digital) at f/3.5, 1/1000 s, ISO 100, capturing the blurred motion of traffic and pedestrians behind him. Post-process with a subtle motion blur and a light film grain overlay to retain the raw candid energy without naming a specific camera.
+
+15- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. The subject is holding a coffee cup on a city sidewalk outside a modern glass office entrance, wearing an oversized puffer jacket and cargo pants. The scene is shot on a 1990s SLR with visible grain at f/3.5, 1/250 s, ISO 200, with a warm sepia tint and dust specks added in post.
+
+16- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. The subject stands within a stripped‑down concrete installation inspired by Prada’s Autumn‑Winter 2025 scenography, where raw concrete slabs and modular panels form linear perspectives and angular shapes. He wears a sharply tailored minimalist charcoal coat over wide ivory trousers and sleek black boots. He stands still, hands clasped lightly in front, eyes focused forward, framed by intersecting concrete planes. Photograph this on a medium‑format film camera with an 80 mm lens at f/4, 1/250 s, ISO 200. Use a single overhead spotlight to carve crisp shadows along the concrete surfaces and accentuate the geometric composition; add subtle film grain and a cool, muted grade for understated sophistication.
+
+17- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. Inside a space where polished steel contrasts with raw concrete—much like Prada’s runway where industrial materials dialogue—the subject leans against a mirrored steel column. He wears a beige turtleneck under a structured tan blazer with matching trousers, and minimal leather loafers. His pose is relaxed, one shoulder against the column, hands tucked in pockets, gaze lowered. Capture the scene with a 50 mm lens on a full‑frame digital camera at f/2.2, 1/400 s, ISO 100, allowing reflections to play across his face. Use diffused side lighting to create gentle gradients on the steel and a soft shadow behind him; finish with a slight vignette and fine grain to evoke Prada’s contemplative, understated mood.
+
+18- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. The subject moves through an abstract set of adjustable partitions reminiscent of the shoji‑like modular structures Prada uses to open and close perspectives. Panels of translucent frosted glass create geometric shadows across his oversized cream wool coat and loose trousers. He pauses mid‑stride, one hand brushing a panel as if parting a curtain. Shoot with a Leica rangefinder and 35 mm lens at f/2, 1/125 s, ISO 400. Use backlighting through the panels to cast layered silhouettes and soft glows, then add a matte finish and desaturated colors for a modern, architectural feel.
+
+19- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. The subject stands alone in a large, empty room where the essential takes precedence over the superfluous. The room features a single sculptural staircase and a long, shallow reflecting pool that mirrors the ceiling’s geometric lines. Dressed in an unstructured black wool suit with a high collar, he gazes into the pool, hands gently clasped behind his back. Shoot with a Hasselblad medium‑format camera at f/5.6, 1/125 s, ISO 100 to preserve sharp architectural detail. Use soft directional lighting to accentuate the clean lines and calm water reflections. Finish with a minimal color palette and slight film grain to evoke Prada’s quiet, introspective luxury.
+
+20- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. In a barren desert landscape, a pure white rectangular platform rises from the sand. The subject stands centered on it, wearing an oversized camel turtleneck and voluminous cream trousers with a structured waistband, his hands tucked in pockets and eyes closed against the warm wind. Photograph this with a 45 mm lens at f/4, 1/500 s, ISO 100 on a digital medium‑format camera. Use harsh midday light to cast a crisp shadow around the platform, reinforcing the geometric composition; finish with a subtle warm tint and minimal grain to evoke Prada’s raw but immersive minimalism.
+
+21- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. The subject walks slowly along a glass‑floored corridor suspended over a reflecting pool, the water mirroring both him and the minimalist ceiling grid. He wears a flowing charcoal cape coat over a lightweight grey jumpsuit and polished ankle boots; he holds a slim leather folio in one hand. Capture the moment with a Leica rangefinder and 35 mm lens at f/2.8, 1/200 s, ISO 320, ensuring the reflections remain crisp. Natural skylight filters through, creating a calm, introspective atmosphere. Add a matte finish and soft pastel grading to underscore Prada’s understated elegance.
+
+22- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. The subject descends a wide concrete staircase framed by intersecting diagonal railings, creating bold geometric shadows on the steps. He wears a sculptural black wool coat with exaggerated lapels over charcoal cropped trousers and square‑toe boots. Capture the scene on a 50 mm lens at f/2.5, 1/640 s, ISO 100. Illuminate from above with a single high window to emphasise the staircase’s lines, and apply high‑contrast black‑and‑white processing with slight grain for a stark, architectural mood.
+
+23- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. The subject leans on the parapet of a brutalist concrete balcony high above a quiet courtyard. He wears an oversized beige trench coat cinched at the waist, wide pleated trousers, and polished leather shoes; a structured leather portfolio sits on the ledge. Shoot with a medium‑format camera and 80 mm lens at f/4, 1/250 s, ISO 200. Soft morning light casts long shadows across the heavy concrete, highlighting the interplay of mass and void; add a matte film grade and light vignette for subtle drama.
+
+24- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. In a hall with a single sweeping concrete arch over a shallow reflecting pool, the subject stands near the water’s edge. He wears a loose ivory tunic and matching wide trousers; barefoot, he places one hand on the arch for balance as his reflection ripples. Photograph using a 45 mm lens at f/3.5, 1/500 s, ISO 160. Use side lighting to create soft gradients across the arch and water, then apply a warm sepia tint with dust specks to evoke timeless elegance.
+
+25- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. In a cavernous space, a series of large concrete blocks appear to float above the floor via thin steel supports. The subject sits casually on the edge of one cube, wearing a loose sand‑colored sweater tucked into voluminous white trousers and minimalist sandals; he plays with a slim leather cord wrapped around his hand. Photograph using a 35 mm film camera at f/2.8, 1/250 s, ISO 200. Use soft ambient light to blur the boundaries between cubes and the background, then grade with a muted palette and subtle film grain for immersive minimalism.
+
+26- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. The subject walks through a long corridor flanked by evenly spaced vertical wooden slats that cast striped shadows on the floor. He wears an oversized taupe tunic with wide sleeves and matching loose trousers, paired with minimalist sandals. Shoot with a 50 mm lens at f/2.8, 1/250 s, ISO 200, using natural light filtering through the slats. Finish with a muted color grade and fine grain to evoke Prada’s restrained, linear aesthetic.
+
+27- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. The subject stands in an atrium where angular glass panels jut from the walls like shards, creating dramatic reflections. He wears a flowing white coat with asymmetrical lapels, black wide‑leg trousers and minimalist white sneakers; a single silver chain hangs at his neck. Shoot with a 35 mm lens at f/2.5, 1/400 s, ISO 200. Use diffused daylight to highlight glass edges and cast fractured light patterns; apply a cool color grade and light grain for an ethereal, geometric mood.
+
+28- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. The subject walks down a narrow corridor defined by a sequence of triangular arches that shrink in size, creating a vanishing point. He wears a loose‑fitting navy tunic with a mandarin collar, beige wide trousers, and simple leather slippers; his hands hang at his sides. Shoot with a 35 mm lens at f/3.2, 1/400 s, ISO 100, aligning the arches symmetrically. Use soft light to highlight the successive triangles; finish with a muted color palette and fine grain to preserve Prada’s understated, geometric elegance.
+
+29- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. In a vast hall pierced by triangular skylights, angular shafts of light fall across bare concrete floors. The subject stands in the center, wearing a loose black turtleneck paired with ivory pleated trousers and minimalist slip‑ons. Photograph with a 50 mm lens at f/2.5, 1/500 s, ISO 200. Use natural sunlight to cast sharp geometric shapes and apply a monochrome grade with light grain for an austere, architectural mood.
+
+30- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. Crouched on a quiet beach under an overcast sky, elbow on knee, cheek resting on palm; oversized colorful graphic knit, light-wash ripped baggy jeans, white chunky sneakers; shoot low at 28–35 mm, f/2.8, 1/800 s, ISO 100; soft natural light, pastel desaturation, subtle 35 mm film grain.
+
+31- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. Stainless-steel elevator corner, subject squatting with back to wall, sipping from a cup; dark hoodie + black puffer vest, cream wide cargos, black Converse, white wrap sunglasses, over-ear headphones, mesh tote; 28 mm, f/2.2, 1/250 s, ISO 640; cool tint, reflective highlights, light grit overlay.
+
+32- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. Couch in a wood-paneled room, hood up, slouched with legs apart and hands in hoodie pocket; oversized white hoodie, loose blue jeans, retro sneakers; on-camera flash look: 35 mm, f/5.6, 1/60 s, ISO 400; hard flash shadow, warm lamp in frame, direct-flash Y2K vibe.
+
+33- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. Rooftop pool deck, relaxed chair sit with wrists draped over knees; red cap + oversized red tee, wide ecru pants, white court sneakers; 35 mm, f/5.6, 1/1600 s, ISO 100; deep blue sky, punchy color pop, slight clarity boost.
+
+34- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. Minimal concrete corner lean, ankles crossed, candid half-laugh; navy sweatshirt over white shirt tails, beige pleated trousers, white sneakers, slim necklace; 35 mm, f/3.5, 1/400 s, ISO 160; soft overcast light, gentle matte grade.
+
+35- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. Abandoned lot at dusk, standing on the hood of a faded red car; white ribbed tank, dark loose baggy jeans, black high-top Converse, wind-tossed hair; 35 mm, f/2.8, 1/400 s, ISO 200; moody magenta-teal grade, cinematic grain, slight bloom.
+
+36- Use the uploaded face image as the strict locked identity reference, preserving exact facial features, proportions, skin texture, natural hair, and facial expression from the uploaded face image. Apply the styling, clothing, accessories, pose, props, background elements, lighting, camera setup, and atmosphere exactly as seen in the reference photo. Seafront at golden hour, seated on seawall with one leg long toward camera and one arm braced behind; oversized fluffy white tee with red varsity number, heather-grey baggy sweats, grey/white high-tops; 28 mm low angle, f/2.8, 1/1000 s, ISO 100; pastel sunset, light halation, fine grain.
+
+37- Leaning casually against a rusted car, one foot up on the bumper, holding a cigarette loosely. Outfit: vintage leather jacket, distressed baggy jeans, black Converse high-tops. Accessories: minimal, just rings. Camera: Kodak Ektar 100 film, 28mm, f/2.8. Lighting: late golden hour, reddish sunset tones. Effect: heavy film grain, washed-out vintage feel, soft scratches for retro authenticity.
+
+38- Leaning against a white geometric wall, body angled sideways, one hand in oversized blazer pocket, gaze away from the lens. Outfit: boxy oversized gray suit, white tee tucked in, Balenciaga chunky sneakers. Accessories: oversized tote bag. Camera: 50mm, f/5.6. Lighting: sharp sunlight casting long shadows, geometric play of light and shade. Effect: minimalistic high-fashion editorial finish, crisp edges with desaturated tones.
+
+39- Sitting on a street curb, elbows resting on knees, sipping from a soda can, sneakers slightly untied. Outfit: oversized graphic hoodie layered with plaid flannel shirt, ripped denim, Nike Dunk Lows. Accessories: bucket hat. Camera: handheld, 24mm, f/2.2, ISO 600. Lighting: urban streetlights mixed with ambient neon signage. Effect: raw street photography vibe, gritty textures, muted contrast with analog-like color bleed.
+
+40- Relaxed on a velvet sofa, leaning back with one arm draped casually, eyes focused directly at camera. Outfit: oversized cream knit sweater, wide corduroy trousers, loafers. Accessories: subtle silver watch. Camera: 85mm portrait lens, f/1.8. Lighting: soft lamp glow with shadows emphasizing textures. Effect: cinematic warm tones, subtle grain, intimate editorial look.
+
+41- Captured mid-action, crouched on skateboard with intense expression, sunlight hitting from behind. Outfit: oversized vintage windbreaker, baggy cargos, Vans sneakers. Accessories: crossbody bag. Camera: fisheye 16mm, f/4, 1/1000s. Lighting: bright harsh daylight. Effect: Y2K raw skate aesthetic, slight vignette, boosted blues/greens.
+
+42- Sitting low on a concrete edge by the sea, one arm propped back for balance, casual posture with face turned to horizon. Outfit: oversized sports jersey, loose gray sweatpants, Nike Jordan 1 sneakers. Accessories: layered necklace. Camera: Sony A7 III, 28mm, f/2.8. Lighting: pastel sunset gradient sky, natural backlight. Effect: soft cinematic tones, clean highlights, Instagram-ready dreamy finish.
+
+43- Leaning back against a graffiti wall, legs crossed, cigarette in hand, expression serious. Outfit: oversized Balenciaga hoodie, cargo pants, chunky sneakers. Accessories: crossbody sling bag. Camera: Canon EOS R5, 24mm, f/3.5. Lighting: harsh midday sunlight. Effect: gritty editorial with boosted contrast, slight grunge overlay.
+
+44- Walking along a deserted beach, trench coat flowing in wind, gaze turned sideways. Outfit: Dior-inspired beige oversized coat, tailored trousers, bare feet on sand. Camera: Hasselblad H6D, 50mm, f/4. Lighting: natural golden hour glow. Effect: high-fashion luxury tone.
+
+45- Sprawled casually on couch, hoodie hood up, gaze half into camera, half distracted. Outfit: baggy gray hoodie, loose sweatpants, Nike Air Force 1s. Camera: iPhone raw photo, slightly tilted angle. Lighting: table lamp glow only. Effect: raw unfiltered Instagram aesthetic with muted tones.
+
+46- Standing in front of an escalator in an abandoned mall, hands in oversized blazer pockets, body rigid, expression blank. Outfit: Dior couture blazer, oversized trousers, shiny black loafers. Camera: Leica SL2, 35mm, f/5.6. Lighting: dramatic artificial mall lighting. Effect: futuristic luxury editorial minimalism.
+
+47- Captured mid-sip holding coffee cup, candid laugh. Outfit: oversized graphic tee, baggy cargos, Adidas Campus sneakers. Camera: handheld smartphone. Lighting: natural afternoon sun. Effect: raw casual streetwear vibe, Polaroid filter overlay.
+
+48- Model standing in a narrow urban alley, one hand shielding eyes from direct flash, candid expression caught mid-blink. Outfit: oversized leather jacket, wide baggy jeans, chunky boots. Accessories: crossbody Prada nylon bag. Camera: iPhone flash ON, wide angle. Lighting: harsh direct flash against dark background. Effect: Y2K street-style fashion vibe, paparazzi editorial mood.
+
+49- Leaning against elevator wall, arms crossed, oversized coat swallowing frame, low gaze. Outfit: Balenciaga oversized puffer, baggy sweatpants, chunky sneakers. Accessories: shopping tote. Camera: iPhone, flash ON, close-up wide angle. Lighting: flat harsh flash. Effect: raw paparazzi vibe, distorted perspective, Y2K candid feel.
+
+50- Hyper-realistic low-angle full-body shot of a young man leaning against a Land Rover Defender in a dim basement garage. Wearing oversized Nike wind cheater, baggy basketball pants, Adidas chunky sneakers, basketball cap. Hands crossed, attitude gaze.
+Luxury SUVs softly blurred with cinematic bokeh, shallow depth of field, strong subject separation, and 8K cinematic color grading.
+
+... (truncated for brevity in this environment) ...
+</script>
+
+<script>
+function parsePrompts(raw){
+  const lines = raw.split(/\r?\n/);
+  const items = [];
+  let current = { idx:null, text: [] };
+  const startRe = /^\s*(\d{1,3})\s*[-\.]/;
+
+  for(const line of lines){
+    const m = line.match(startRe);
+    if(m){
+      if(current.idx !== null){ items.push({ idx: current.idx, prompt: current.text.join("\n").trim() }); }
+      current = { idx: parseInt(m[1],10), text: [ line.replace(startRe, "").trim() ] };
+    }else{
+      if(current.idx === null){ continue; }
+      current.text.push(line);
+    }
+  }
+  if(current.idx !== null){ items.push({ idx: current.idx, prompt: current.text.join("\n").trim() }); }
+
+  items.sort((a,b)=>a.idx-b.idx);
+  const data = items.map(it => {
+    const num = String(it.idx).padStart(2,"0");
+    return { title: String(it.idx), img: `images/${num}.jpg`, prompt: it.prompt };
+  });
+  return data;
+}
+
+function filteredData(all){
+  const q = (document.getElementById("search").value || "").toLowerCase();
+  if(!q) return all;
+  return all.filter(d => (d.title||"").toLowerCase().includes(q) || (d.prompt||"").toLowerCase().includes(q));
+}
+
+function render(){
+  const raw = document.getElementById("promptsText").textContent;
+  const DATA = parsePrompts(raw);
+  const grid = document.getElementById("grid");
+  const list = filteredData(DATA);
+  document.getElementById("count").textContent = `${list.length} shown / ${DATA.length} total`;
+  grid.innerHTML = "";
+  list.forEach((d, i) => {
+    const card = document.createElement("div");
+    card.className = "card";
+    const title = d.title ? `<div class="tiny">#${d.title}</div>` : "";
+    card.innerHTML = `
+      <div class="img">
+        <img loading="lazy" alt="image ${d.title}" src="${d.img}" />
+        <div class="wm">zain</div>
+      </div>
+      <div class="body">
+        ${title}
+        <textarea readonly id="txt_${i}">${d.prompt}</textarea>
+        <div class="row">
+          <button class="copy" onclick="copyPrompt(${i})">Copy prompt</button>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+async function copyPrompt(i){
+  const el = document.getElementById('txt_'+i);
+  try { await navigator.clipboard.writeText(el.value); el.style.outline = "2px solid var(--accent)"; setTimeout(()=> el.style.outline="none", 600); }
+  catch (e) { alert("Copy failed. Select the text and copy manually."); }
+}
+
+document.addEventListener("DOMContentLoaded", render);
+</script>
+</body>
+</html>
